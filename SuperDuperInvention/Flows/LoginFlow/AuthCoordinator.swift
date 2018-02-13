@@ -34,7 +34,9 @@ final class AuthCoordinator: BaseCoordinator, AuthCoordinatorOutput {
             self?.showSignUp()
         }
 
-        loginVC.loginViewModel = LoginViewModel()
+        let loginViewModel = LoginViewModel()
+        loginVC.loginViewModel = loginViewModel
+
         router.setRootModule(loginVC)
     }
     

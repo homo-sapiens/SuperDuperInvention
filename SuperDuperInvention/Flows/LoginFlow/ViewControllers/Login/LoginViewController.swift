@@ -93,11 +93,10 @@ final class LoginViewController: BaseViewController, LoginView, LoginViewInput {
             .subscribe(onNext: { (element) in
                 print(element)
             })
-        
+
         _ = loginButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                self?.onCompleteAuth
-
+               self?.onCompleteAuth
             })
             .disposed(by: disposeBag)
 
