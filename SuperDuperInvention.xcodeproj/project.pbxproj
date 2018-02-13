@@ -24,6 +24,10 @@
 		92986EC5203193CE004FABD2 /* ItemCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986EC4203193CE004FABD2 /* ItemCoordinatorOutput.swift */; };
 		92986EC820329376004FABD2 /* LoginViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986EC720329376004FABD2 /* LoginViewInput.swift */; };
 		92986ECA203293C7004FABD2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986EC9203293C7004FABD2 /* LoginViewModel.swift */; };
+		92986ECC2032CF3F004FABD2 /* ItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986ECB2032CF3F004FABD2 /* ItemListViewModel.swift */; };
+		92986ECE2032CF7D004FABD2 /* ItemListViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986ECD2032CF7C004FABD2 /* ItemListViewInput.swift */; };
+		92986ED02032DB87004FABD2 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92986ECF2032DB87004FABD2 /* ItemTableViewCell.swift */; };
+		92986ED22032DBAD004FABD2 /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92986ED12032DBAD004FABD2 /* ItemTableViewCell.xib */; };
 		92BAE45F202D49A300ADE05A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BAE45E202D49A300ADE05A /* AppDelegate.swift */; };
 		92BAE464202D49A300ADE05A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BAE462202D49A300ADE05A /* Main.storyboard */; };
 		92BAE466202D49A300ADE05A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BAE465202D49A300ADE05A /* Assets.xcassets */; };
@@ -74,6 +78,10 @@
 		92986EC4203193CE004FABD2 /* ItemCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCoordinatorOutput.swift; sourceTree = "<group>"; };
 		92986EC720329376004FABD2 /* LoginViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewInput.swift; sourceTree = "<group>"; };
 		92986EC9203293C7004FABD2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		92986ECB2032CF3F004FABD2 /* ItemListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewModel.swift; sourceTree = "<group>"; };
+		92986ECD2032CF7C004FABD2 /* ItemListViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewInput.swift; sourceTree = "<group>"; };
+		92986ECF2032DB87004FABD2 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		92986ED12032DBAD004FABD2 /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
 		92BAE45B202D49A300ADE05A /* SuperDuperInvention.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperDuperInvention.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92BAE45E202D49A300ADE05A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92BAE463202D49A300ADE05A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -190,6 +198,10 @@
 				92986EB72031856B004FABD2 /* ItemListView.swift */,
 				92986EBC203185C1004FABD2 /* ItemListViewController.swift */,
 				92986EBE20318631004FABD2 /* ItemsListViewController.xib */,
+				92986ECB2032CF3F004FABD2 /* ItemListViewModel.swift */,
+				92986ECD2032CF7C004FABD2 /* ItemListViewInput.swift */,
+				92986ECF2032DB87004FABD2 /* ItemTableViewCell.swift */,
+				92986ED12032DBAD004FABD2 /* ItemTableViewCell.xib */,
 			);
 			path = ItemList;
 			sourceTree = "<group>";
@@ -445,6 +457,7 @@
 				92986EBF20318631004FABD2 /* ItemsListViewController.xib in Resources */,
 				92BAE469202D49A300ADE05A /* LaunchScreen.storyboard in Resources */,
 				92BAE4A2202D537F00ADE05A /* LoginViewController.xib in Resources */,
+				92986ED22032DBAD004FABD2 /* ItemTableViewCell.xib in Resources */,
 				92986EB320317C81004FABD2 /* OnboardingViewController.xib in Resources */,
 				92BAE466202D49A300ADE05A /* Assets.xcassets in Resources */,
 				92BAE464202D49A300ADE05A /* Main.storyboard in Resources */,
@@ -531,6 +544,7 @@
 				92986EBB203185A2004FABD2 /* Item.swift in Sources */,
 				92BAE476202D4B1700ADE05A /* BaseCoordinator.swift in Sources */,
 				9264FF22202DAF5E001B496E /* BaseViewController.swift in Sources */,
+				92986ED02032DB87004FABD2 /* ItemTableViewCell.swift in Sources */,
 				92BAE47B202D4B9000ADE05A /* Coordinator.swift in Sources */,
 				92BAE47D202D4CF100ADE05A /* BaseView.swift in Sources */,
 				92BAE4AB202D549000ADE05A /* ModuleFactoryImp.swift in Sources */,
@@ -543,6 +557,7 @@
 				92BAE4A7202D53B800ADE05A /* TermsView.swift in Sources */,
 				92BAE4B2202D5AF300ADE05A /* NSObjectExtensions.swift in Sources */,
 				92BAE4AE202D5AB900ADE05A /* UIViewControllerExtension.swift in Sources */,
+				92986ECE2032CF7D004FABD2 /* ItemListViewInput.swift in Sources */,
 				92BAE488202D4F2C00ADE05A /* RouterImp.swift in Sources */,
 				92BAE478202D4B2D00ADE05A /* ApplicationCoordinator.swift in Sources */,
 				92BAE49E202D534600ADE05A /* SignUpView.swift in Sources */,
@@ -550,6 +565,7 @@
 				92BAE47F202D4D0700ADE05A /* Presentable.swift in Sources */,
 				92986ECA203293C7004FABD2 /* LoginViewModel.swift in Sources */,
 				92BAE497202D528500ADE05A /* LoginViewController.swift in Sources */,
+				92986ECC2032CF3F004FABD2 /* ItemListViewModel.swift in Sources */,
 				92986EB82031856B004FABD2 /* ItemListView.swift in Sources */,
 				92986EA920317AA1004FABD2 /* OnboardingCoordinatorOutput.swift in Sources */,
 				92BAE4B4202D5E9D00ADE05A /* AuthCoordinatorOutput.swift in Sources */,

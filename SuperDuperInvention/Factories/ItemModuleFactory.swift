@@ -7,7 +7,7 @@
 //
 
 protocol ItemModuleFactory {
-    func makeMainItems() -> ItemsListView
+    func makeMainItems() -> ItemsListView & ItemListViewInput
     //func makeItemDetailOutput(item: Item) -> ItemDetailView
 }
 

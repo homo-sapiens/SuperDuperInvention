@@ -6,25 +6,32 @@
 //  Copyright © 2018 PunicApp. All rights reserved.
 //
 
-final class ItemsListViewController: BaseViewController, ItemsListView {
+final class ItemsListViewController: BaseViewController, ItemsListView, ItemListViewInput {
 
-    //controller handler
+    //MARK: ItemsListView
     var onItemSelect: ((Item) -> ())?
     var onCreateItem: (() -> Void)?
     var onLogout: (() -> Void)?
 
+    //MARK: ItemListViewInput
+    var itemListViewModel: ItemListViewModel?
+
+
     @IBAction func addItemButtonClicked(_ sender: UIBarButtonItem) { onCreateItem?() }
     @IBAction func logoutButtonClicked(_ sender: UIBarButtonItem) { onLogout?() }
 
-    @IBOutlet weak var tableView: UITableView!
-    //mock datasource
-    var items = (0...10).map { index in return Item(title: "Item № \(index)", subtitle: "Item descripton") }
+    @IBOutlet private weak var tableView: UITableView!
+
+    let disposeBag = DisposeBag()
+
     var authCheck = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Items"
+        setupUI()
+        setupBindings()
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
@@ -37,29 +44,33 @@ final class ItemsListViewController: BaseViewController, ItemsListView {
             action: #selector(ItemsListViewController.logoutButtonClicked(_:))
         )
     }
+
+    private func setupUI() {
+        title = itemListViewModel?.title.value
+        tableView.register(UINib(nibName: "\(ItemTableViewCell.self)", bundle: Bundle.main),
+                           forCellReuseIdentifier: "\(ItemTableViewCell.self)")
+    }
+
+    private func setupBindings() {
+        guard let viewModel = itemListViewModel else {
+            return
+        }
+
+        viewModel.items
+            .bind(to: tableView.rx.items(cellIdentifier: "ItemTableViewCell", cellType: ItemTableViewCell.self)) { (row, item, cell) in
+                cell.setName(item.title + " AND " + item.subtitle)
+            }
+            .disposed(by: disposeBag)
+
+        tableView.rx
+            .modelSelected(Item.self)
+            .subscribe(onNext:  { [weak self] value in
+               print("Cell selected")
+                self?.onItemSelect?(value)
+            })
+            .disposed(by: disposeBag)
+
+
+    }
 }
 
-extension ItemsListViewController: UITableViewDelegate, UITableViewDataSource {
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let cell = UITableViewCell()
-        let item = items[(indexPath as NSIndexPath).row]
-        cell.textLabel?.text = item.title
-        cell.detailTextLabel?.text = item.subtitle
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        onItemSelect?(items[(indexPath as NSIndexPath).row])
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-}

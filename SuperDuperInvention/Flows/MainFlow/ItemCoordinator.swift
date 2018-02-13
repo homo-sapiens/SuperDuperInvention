@@ -28,7 +28,7 @@ final class ItemCoordinator: BaseCoordinator, ItemCoordinatorOutput {
 
     private func showItemList() {
 
-        let itemsOutput = factory.makeMainItems()
+        var itemsOutput = factory.makeMainItems()
         itemsOutput.onItemSelect = { [weak self] (item) in
             self?.showItemDetail(item)
         }
@@ -40,7 +40,8 @@ final class ItemCoordinator: BaseCoordinator, ItemCoordinatorOutput {
             self?.runLogout()
         }
 
-
+        let viewModel = ItemListViewModel()
+        itemsOutput.itemListViewModel = viewModel
         router.setRootModule(itemsOutput)
     }
 

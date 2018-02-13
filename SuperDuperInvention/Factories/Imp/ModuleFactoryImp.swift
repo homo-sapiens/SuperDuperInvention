@@ -24,7 +24,7 @@ final class ModuleFactoryImp: AuthModuleFactory, OnboardingModuleFactory, ItemMo
         return OnboardingViewController.init(nibName: OnboardingViewController.nameOfClass, bundle: nil)
     }
 
-    func makeMainItems() -> ItemsListView {
+    func makeMainItems() -> ItemsListView & ItemListViewInput {
         return ItemsListViewController.init(nibName: ItemsListViewController.nameOfClass, bundle: nil)
     }
 
