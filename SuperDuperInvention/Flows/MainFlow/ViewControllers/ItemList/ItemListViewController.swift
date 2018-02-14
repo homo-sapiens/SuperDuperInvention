@@ -56,7 +56,7 @@ final class ItemsListViewController: BaseViewController, ItemsListView, ItemList
             return
         }
 
-        viewModel.items
+        viewModel.items.asObservable()
             .bind(to: tableView.rx.items(cellIdentifier: "ItemTableViewCell", cellType: ItemTableViewCell.self)) { (row, item, cell) in
                 cell.setName(item.title + " AND " + item.subtitle)
             }
@@ -66,7 +66,8 @@ final class ItemsListViewController: BaseViewController, ItemsListView, ItemList
             .modelSelected(Item.self)
             .subscribe(onNext:  { [weak self] value in
                print("Cell selected")
-                self?.onItemSelect?(value)
+                //self?.onItemSelect?(value)
+                viewModel.updateItems()
             })
             .disposed(by: disposeBag)
 
