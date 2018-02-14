@@ -78,8 +78,7 @@ final class ItemsListViewController: BaseViewController, ItemsListView, ItemList
 
 
         // View Model outputs to the View Controller
-        viewModel.items
-            .observeOn(MainScheduler.instance)
+        viewModel.items.asObservable()
             .do(onNext: { [weak self] _ in self?.refreshControl.endRefreshing() })
             .bind(to: tableView.rx.items(cellIdentifier: "ItemTableViewCell", cellType: ItemTableViewCell.self)) { [weak self] (row, item, cell) in
                 cell.setName(item.title + " AND " + item.subtitle)
