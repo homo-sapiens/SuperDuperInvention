@@ -42,11 +42,17 @@ final class ItemCoordinator: BaseCoordinator, ItemCoordinatorOutput {
 
         let viewModel = ItemListViewModel()
         itemsOutput.itemListViewModel = viewModel
+        viewModel.showItem
+        .subscribe(onNext: { [weak self] in self?.showItemDetail($0) })
+        .disposed(by: disposeBag)
+
         router.setRootModule(itemsOutput)
     }
 
     private func showItemDetail(_ item: Item) {
         print("showItemDetail")
+        print("item = \(item)")
+
 
 /*
         let itemDetailFlowOutput = factory.makeItemDetailOutput(item: item)

@@ -8,6 +8,9 @@
 
 class BaseCoordinator: Coordinator {
 
+    /// Utility `DisposeBag` used by the subclasses.
+    let disposeBag = DisposeBag()
+    
     var childCoordinators: [Coordinator] = []
 
     func start() {}

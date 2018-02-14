@@ -7,15 +7,45 @@
 //
 
 class ItemListViewModel {
-    let title = Variable<String>("Main items")
-    let items = Variable<[Item]>([])
+
+    // MARK: - Inputs
+
+    /// Call to open detailItem.
+    let selectItem: AnyObserver<Item>
+
+    /// Call to reload items.
+    let reload: AnyObserver<Void>
+
+
+    // MARK: - Outputs
+
+    /// Emits an array of fetched items.
+    let items: Observable<[Item]>
+
+    /// Emits a formatted title for a navigation item.
+    let title: Observable<String>
+
+    /// Emits an item to be shown in detail screen.
+    let showItem: Observable<Item>
 
 
     init() {
-        self.items.value = (0..<20).map { Item(title: "Item № \($0)", subtitle: "Item descripton") }
+
+        let _reload = PublishSubject<Void>()
+        self.reload = _reload.asObserver()
+
+        self.title = Observable.just("Main Items!")
+
+        let _selectItem = PublishSubject<Item>()
+        self.selectItem = _selectItem.asObserver()
+        self.showItem = _selectItem.asObservable()
+            .map { $0 }
+
+        self.items = Observable.from(optional: (0..<20).map { Item(title: "Item № \($0)", subtitle: "Item descripton") })
+
     }
 
     func updateItems() {
-        self.items.value.append(Item(title: "NewItem № 4578", subtitle: "NewItem descripton"))
+       // self.items.value.append(Item(title: "NewItem № 4578", subtitle: "NewItem descripton"))
     }
 }
